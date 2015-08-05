@@ -76,3 +76,15 @@ function LetterCapitalize(str) {
   return newWord; 
          
 }
+
+function SimpleSymbols(str) { 
+  var matches = str.match(new RegExp(".[A-Za-z].","gm"));
+  for (var m = 0; m < matches.length; m++){
+    var g = matches[m].match(new RegExp("\\+[A-Za-z]\\+","gm"));
+    if (g == null) {
+      return "false";
+      }
+  }
+  return "true";
+         
+}

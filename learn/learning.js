@@ -50,41 +50,42 @@ function SimpleAdding(num) {
 
 function LongestWord(sen) { 
 
-  // code goes here
-  // using regexps again
-  var big;
-  var wordList = sen.match(new RegExp('[\\w\\d]+','gm'));
-  for (var i = 0; i < wordList.length; i++) {
-    if (wordList[i].length > big.length) {
-      big = wordList[i];
+    // code goes here
+    // using regexps again
+    var big;
+    var wordList = sen.match(new RegExp('[\\w\\d]+','gm'));
+    for (var i = 0; i < wordList.length; i++) {
+        if (wordList[i].length > big.length) {
+            big = wordList[i];
+        }
     }
-  }
-  return big; 
+    return big; 
 }
 
 function LetterCapitalize(str) { 
 
-  // code goes here
-  //rip lsit of words, and just capitalize each first letter
-  var wordList = str.match(new RegExp('\\w+','g'));
-  var newWord;
-  for (var i = 0; i < wordList.length; i++) {
-    var word = wordList[i];
-    word = word[0].toUpperCase() + word.substring(1,word.length);
-    newWord += word + ' ';
-  }
-  return newWord; 
-         
+    // code goes here
+    //rip lsit of words, and just capitalize each first letter
+    var wordList = str.match(new RegExp('\\w+','g'));
+    var newWord;
+    for (var i = 0; i < wordList.length; i++) {
+        var word = wordList[i];
+        word = word[0].toUpperCase() + word.substring(1,word.length);
+        newWord += word + ' ';
+    }
+    return newWord; 
+
 }
 
 function SimpleSymbols(str) { 
-  var matches = str.match(new RegExp(".[A-Za-z].","gm"));
-  for (var m = 0; m < matches.length; m++){
-    var g = matches[m].match(new RegExp("\\+[A-Za-z]\\+","gm"));
-    if (g == null) {
-      return "false";
-      }
-  }
-  return "true";
-         
+    str = "="+str+"=";
+    var matches = str.match(new RegExp(".[A-Za-z].","gm"));
+    for (var m = 0; m < matches.length; m++){
+        var g = matches[m].match(new RegExp("\\+[A-Za-z]\\+","gm"));
+        if (g == null) {
+            return "false";
+        }
+    }
+    return "true";
+
 }

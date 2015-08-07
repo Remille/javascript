@@ -33,7 +33,6 @@ function LetterChanges(str) {
 
         modStr += String.fromCharCode(char);
     }
-
     // capitalize vowels
     modStr = modStr.replace(new RegExp('[aeiou]','gm'), function (match) {return match.toUpperCase()});
     return modStr;
@@ -74,7 +73,6 @@ function LetterCapitalize(str) {
         newWord += word + ' ';
     }
     return newWord; 
-
 }
 
 function SimpleSymbols(str) { 
@@ -87,5 +85,37 @@ function SimpleSymbols(str) {
         }
     }
     return "true";
+}
 
+function CheckNums(num1,num2) { 
+    if(num2 === num1){return -1;}
+    return (num2 > num1);
+}
+
+function TimeConvert(num) { 
+    var minutes = num % 60;
+    var hour = Math.floor(num / 60);  
+    return hour+":"+minutes; 
+}
+
+function AlphabetSoup(str) { 
+    str = str.split("");
+    str = str.sort();
+    str = str.join("");
+    return str;
+}
+
+function ABCheck(str) { 
+    var match = str.match(new RegExp(/a.{3}b|b.{3}a/));
+    return !(match === null) ; 
+}
+
+function VowelCount(str) { 
+    var match = str.match(new RegExp(/[aeiou]/gm));
+    return match === null? 0:match.length; 
+}
+
+function WordCount(str) { 
+    var match = str.match(new RegExp(/\S+/g)); 
+    return "length" in match? match.length : 0; 
 }

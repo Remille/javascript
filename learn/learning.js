@@ -125,10 +125,30 @@ function ExOh(str) {
 }
 
 function Palindrome(str) { 
-    str = str.split(/\s/).join('');
-    var r = '';
-    for (var i = str.length; i >= 0; i--) {
-        r += str.charAt(i);
-    }
+    var r = str.split('').reverse().join('');
     return str === r; 
+}
+function ArithGeo(arr) { 
+    var arith = []; var geo = [];
+    for (var i = 1; i < arr.length; i++) {
+        arith.push(arr[i] - arr[i-1]);
+        geo.push(arr[i]/arr[i-1]);
+    }
+    // if arith elements all the same, returhn Arithmetic, 
+    // else geo elements all the same, return Geometric
+    // else return -1
+    var arith_sames = 0;
+    var geo_sames = 0;
+    for (var i = 0; i < arith.length; i++) {
+        if (arith[i] === arith[i+1]) {
+            arith_sames += 1;
+        }
+        if (geo[i] === geo[i+1]) {
+            geo_sames += 1;
+        }
+    }
+
+    if (arith_sames === arith.length - 1) {return "Arithmetic";}
+    if (geo_sames === geo.length - 1) {return "Geometric";}
+    return -1; 
 }

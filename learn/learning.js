@@ -48,8 +48,6 @@ function SimpleAdding(num) {
 }
 
 function LongestWord(sen) { 
-
-    // code goes here
     // using regexps again
     var big;
     var wordList = sen.match(new RegExp('[\\w\\d]+','gm'));
@@ -62,8 +60,6 @@ function LongestWord(sen) {
 }
 
 function LetterCapitalize(str) { 
-
-    // code goes here
     //rip lsit of words, and just capitalize each first letter
     var wordList = str.match(new RegExp('\\w+','g'));
     var newWord;
@@ -118,4 +114,21 @@ function VowelCount(str) {
 function WordCount(str) { 
     var match = str.match(new RegExp(/\S+/g)); 
     return "length" in match? match.length : 0; 
+}
+
+function ExOh(str) { 
+    var x = str.match(new RegExp(/x/gm));
+    x ? x = x.length : x = 0;
+    var o = str.match(new RegExp(/o/gm));
+    o ? o = o.length : o = 0;
+    return x === o;
+}
+
+function Palindrome(str) { 
+    str = str.split(/\s/).join('');
+    var r = '';
+    for (var i = str.length; i >= 0; i--) {
+        r += str.charAt(i);
+    }
+    return str === r; 
 }

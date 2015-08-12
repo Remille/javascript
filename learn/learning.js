@@ -128,6 +128,7 @@ function Palindrome(str) {
     var r = str.split('').reverse().join('');
     return str === r; 
 }
+
 function ArithGeo(arr) { 
     var arith = []; var geo = [];
     for (var i = 1; i < arr.length; i++) {
@@ -151,4 +152,32 @@ function ArithGeo(arr) {
     if (arith_sames === arith.length - 1) {return "Arithmetic";}
     if (geo_sames === geo.length - 1) {return "Geometric";}
     return -1; 
+}
+
+function ArrayAdditionI(arr) { 
+    arr = arr.sort(function (a,b) {return a-b;});
+    var largest = arr.pop();
+
+    function sumAll (array) {
+        var sum = 0;
+        for (var i = 0; i < array.length; i++) {sum += array[i];}
+        return sum;
+    }
+
+    var combinations = function(set) {
+        return (function acc(xs, set) {
+            var x = xs[0];
+            if(typeof x === "undefined")
+                return set;
+            for(var i = 0, l = set.length; i < l; ++i)
+                set.push(set[i].concat(x));
+            return acc(xs.slice(1), set);
+        })(set, [[]]).slice(1);
+    };
+
+    var test = combinations(arr);
+    for (var i = 0; i < test.length; i++) {
+        if (sumAll(test[i]) === largest) {return "true";}
+    }
+    return "false";         
 }

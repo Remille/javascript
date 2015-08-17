@@ -181,3 +181,36 @@ function ArrayAdditionI(arr) {
     }
     return "false";         
 }
+
+function LetterCountI(str) { 
+    var count = function (word) {
+        var most_repeated_letter = null; var letter_reps = 1;
+        for (var i in word) {
+            var letter = word[i];
+            var r = 0;
+            for (var j in word) {
+                var compare = word[j];
+                if (compare === letter) {r+=1;}
+            }
+            if (r > letter_reps) {letter_reps = r; most_repeated_letter = letter;}
+        }
+        if (most_repeated_letter === null) {return null;}
+        return letter_reps;
+    }
+
+    // code goes here
+    var words = str.match(/\w+/g);
+    var length = 0; var word_with_most_letter_reps = -1;
+    for (var i in words) {
+        var word = words[i];
+        var c = count(word);
+        if (c != null) {
+            if (c > length) {
+                length = c;
+                word_with_most_letter_reps = word;
+            }
+        }
+    }
+    return word_with_most_letter_reps;    
+}
+

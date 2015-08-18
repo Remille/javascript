@@ -214,3 +214,36 @@ function LetterCountI(str) {
     return word_with_most_letter_reps;    
 }
 
+function SecondGreatLow(arr) {
+    arr.sort(function (a,b) {return a > b;});
+    var smallest = arr[0]; var largest = arr[arr.length - 1];
+    var second_smallest = smallest; var second_largest = largest;
+    for (var i in arr) {
+        if (smallest < arr[i]) {
+            second_smallest = arr[i]; //console.log(second_smallest);
+            break;
+        }
+    }
+    arr = arr.reverse();
+    for (var i in arr) {
+        if (largest > arr[i]) { 
+            second_largest = arr[i]; //console.log(second_largest); 
+            break;
+        }
+    }
+    return (second_smallest+' '+second_largest);
+}
+
+function DivisionStringified(num1,num2) { 
+    var div = (Math.round(num1 / num2)).toString().split('').reverse();
+    var count = 0; var string = '';
+    for (var i in div) {
+        count += 1;
+        string += div[i];
+        if (count === 3) {
+            string += ',';
+            count = 0;
+        }
+    }
+    return string.split('').reverse().join('');
+}

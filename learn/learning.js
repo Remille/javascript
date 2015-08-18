@@ -247,3 +247,46 @@ function DivisionStringified(num1,num2) {
     }
     return string.split('').reverse().join('');
 }
+
+function CountingMinutesI(str) {
+    var times = str.match(/\d+:\d+[ap]m/g);
+    var first_time = times[0]; var second_time = times[1];
+    var first_meridian = first_time.match(/[ap]m/g)[0];
+    var second_meridian = second_time.match(/[ap]m/g)[0];
+    // if you convert to military time, it becomes very easy
+    var conv = function (time) {
+        var t = time.match(/\d+/g);
+        var hours = t[0]; var minutes = t[1];
+        var total_time = Number(hours * 60) + Number(minutes);
+        //var mornOrAft = time.match(/[ap]m/g);
+        //if (mornOrAft === 'pm') {total_time + (12 * 60);}
+        return total_time;
+    }
+    var time = conv(first_time) - conv(second_time);
+    if (first_meridian === second_meridian) {
+        if (time > 0) {time = (24*60) - time;}
+        else {time = time * -1;}
+    }
+    else {
+        time = (12*60) - time;        
+    }
+    return time;     
+}
+
+function MeanMode(arr) { 
+    var mean = function(arr){
+        var sum = 0;
+        for (var i in arr) {sum += arr[i]}
+        return (sum / arr.length) ;
+    }
+    var mode = function(arr){
+        var c = 1; var mode = null;
+        for (var i in arr) {
+            var count = 0;
+            for (var j in arr) {if (arr[j] == arr[i]) {count +=1;}}
+            if (count > c) {c = count; mode = arr[i];}
+        }
+        return mode;
+    }
+    return (mode(arr) === mean(arr) ? 1 : 0);
+}

@@ -290,3 +290,17 @@ function MeanMode(arr) {
     }
     return (mode(arr) === mean(arr) ? 1 : 0);
 }
+
+function DashInsert(str) { 
+    str = str.split('');
+    var word = '';
+    var isOdd = function (num) {return !(num % 2 === 0);}
+    for (var i = 0; i < str.length - 1; i++) {
+        word += str[i];
+        var num = Number(str[i]); //console.log(num);
+        var next = Number(str[i+1]); //console.log(next);
+        if (isOdd(num) && isOdd(next)) {word += '-';}   
+    }
+    word += str[str.length - 1];
+    return word;
+}

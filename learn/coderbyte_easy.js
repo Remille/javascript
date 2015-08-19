@@ -304,3 +304,92 @@ function DashInsert(str) {
     word += str[str.length - 1];
     return word;
 }
+
+function SwapCase(str) {
+    // upper case char range 65-90
+    // lower case char range 97-122
+    var s = '';
+    for (var i = 0; i < str.length; i++) {
+        if ((65 <= str.charCodeAt(i)) && (str.charCodeAt(i) <= 90)) {
+            s += str.charAt(i).toLowerCase();
+        }
+        else if ((97 <= str.charCodeAt(i)) && (str.charCodeAt(i) <= 122))  {
+            s += str.charAt(i).toUpperCase();
+        }
+        else {
+            s += str.charAt(i);
+        }
+    }
+    return s; 
+}
+
+function NumberAddition(str) { 
+    var nums = str.match(/\d+/g);
+    var sum = 0;
+    for (var i in nums) {
+        sum += Number(nums[i]);
+    }
+    return sum; 
+
+}
+
+function ThirdGreatest(strArr) { 
+    strArr = strArr.sort(function (a,b) {return a.length < b.length;});
+
+    return strArr[2]; 
+
+}
+
+function PowersofTwo(num) { 
+    var pow = Math.log(num) / Math.log(2);
+    return pow === parseInt(pow); 
+
+}
+
+function AdditivePersistence(num) {
+    var sumNums = function(num){
+        var sum=0; var num = num.toString();
+        for(var i in num){
+            sum+= Number(num[i])
+        } 
+        return sum
+    };
+    var count = 0;
+    while (num > 9) {
+        num = sumNums(num);
+        count +=1;
+    }
+    return count; 
+
+}
+
+function MultiplicativePersistence(num) {
+    var productNum = function (num) {
+        num = num.toString(); var product = 1;
+        for (var i in num) {
+            product *= Number(num[i]);
+        }
+        return product;
+    }
+    var count = 0;
+    while (num > 9) {
+        num = productNum(num);
+        count += 1;
+        if (num === 0) {break;}
+    }
+    return count;
+}
+
+function OffLineMinimum(strArr) { 
+    var nums = []; var mins = [];
+    for (var i in strArr) {
+        if (strArr[i] === 'E') {
+            nums.sort(function (a,b) {return a < b});
+            mins.push(nums.pop());
+        }
+        else {
+            nums.push(strArr[i]);
+        }
+    }
+    return mins.toString(); 
+}
